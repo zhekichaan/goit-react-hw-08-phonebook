@@ -2,7 +2,6 @@ import { Box } from "components/Box";
 import PropTypes from 'prop-types';
 import { FilterInput } from "./Filter.styled";
 
-
 export const Filter = ({filter, updateFilter}) => {
     return (
         <Box mt="20px">

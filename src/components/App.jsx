@@ -56,15 +56,15 @@ export const App = () => {
     })
   }
 
-    return (
-      <Box p="20px">
-        <h2>Phonebook</h2>
-        <Phonebook contacts={contacts} updateContacts={updateContacts} />
+  return (
+    <Box p="20px">
+      <h2>Phonebook</h2>
+      <Phonebook contacts={contacts} updateContacts={updateContacts} />
 
-        <h2>Contacts</h2>
-        <Filter filter={filter} updateFilter={updateFilter} />
-        <Contacts contacts={contacts.filter(contact => contact.name.toLowerCase().includes(filter))} deleteContact={deleteContact} />
-        <GlobalStyle />
-      </Box>
-    );
+      <h2>Contacts</h2>
+      <Filter filter={filter} updateFilter={updateFilter} />
+      <Contacts contacts={contacts.filter(contact => contact.name.toLowerCase().includes(filter))} deleteContact={deleteContact} />
+      <GlobalStyle />
+    </Box>
+  );
 };
