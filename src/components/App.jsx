@@ -1,60 +1,70 @@
-import { Component } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Contacts } from "./Contacts/Contacts";
 import { Phonebook } from "./Phonebook/Phonebook";
 import { Filter } from "./Filter/Filter";
 import { Box } from "./Box";
 import { GlobalStyle } from "./GlobalStyles";
 
-export class App extends Component {
-  state = {
-    contacts: [],
-    filter: '',
-  }
+export const App = () => {
+  const [contacts, setContacts] = useState([])
+  const [filter, setFilter] = useState('')
 
-  componentDidUpdate(prevProps, prevState) {
-    console.log("Component Updated")
-    if(this.state.contacts !== prevState.contacts) {
-      localStorage.setItem("contacts", JSON.stringify(this.state.contacts))
+  const prevCount = usePrevious(contacts);
+
+  useEffect(() => {
+    if(localStorage.getItem("contacts") !== "[]") {
+      const localContacts = localStorage.getItem("contacts")
+      const parsedContacts = JSON.parse(localContacts)
+      setContacts(() => 
+        parsedContacts
+      )
     }
-  }
+  }, [])
 
-  componentDidMount() {
-    console.log("Component Mounted")
-    const contacts = localStorage.getItem("contacts")
-    const parsedContacts = JSON.parse(contacts)
-    if(parsedContacts) {
-      this.setState({ contacts: parsedContacts})
+  useEffect(() => {
+    if(contacts !== prevCount) {
+      localStorage.setItem("contacts", JSON.stringify(contacts))
     }
+  }, [contacts, prevCount])
+
+  function usePrevious(value) {
+    const ref = useRef();
+
+    useEffect(() => {
+      ref.current = value;
+    }, [value]);
+
+    return ref.current;
+  }
+  
+  const updateContacts = (id, name, number) => {
+    setContacts(prevState => 
+      [...prevState, {id: id, name: name, number: number}]
+    )
   }
 
-  updateContacts = (id, name, number) => {
-    this.setState(prevState => ({
-      contacts: [...prevState.contacts, {id: id, name: name, number: number}]
-    }))
-  }
-
-  updateFilter = (filter) => {
-    this.setState({
-      filter: filter
+  const updateFilter = (filter) => {
+    setFilter(() => {
+      return filter
     })
   } 
 
-  deleteContact = (id) => {
-    const newContacts = this.state.contacts.filter(element => element.id !== id);
-    this.setState({ contacts: newContacts });
+  const deleteContact = (id) => {
+    const newContacts = contacts.filter(element => element.id !== id);
+    setContacts(() => {
+      return newContacts
+    })
   }
 
-  render() {
     return (
       <Box p="20px">
         <h2>Phonebook</h2>
-        <Phonebook contacts={this.state.contacts} updateContacts={this.updateContacts} />
+        <Phonebook contacts={contacts} updateContacts={updateContacts} />
 
         <h2>Contacts</h2>
-        <Filter filter={this.state.filter} updateFilter={this.updateFilter} />
-        <Contacts contacts={this.state.contacts.filter(contact => contact.name.toLowerCase().includes(this.state.filter))} deleteContact={this.deleteContact} />
+        <Filter filter={filter} updateFilter={updateFilter} />
+        <Contacts contacts={contacts.filter(contact => contact.name.toLowerCase().includes(filter))} deleteContact={deleteContact} />
         <GlobalStyle />
       </Box>
     );
-  }
 };
