@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { Contacts } from "./Contacts/Contacts";
 import { Phonebook } from "./Phonebook/Phonebook";
 import { Filter } from "./Filter/Filter";
@@ -9,33 +9,17 @@ export const App = () => {
   const [contacts, setContacts] = useState([])
   const [filter, setFilter] = useState('')
 
-  const prevCount = usePrevious(contacts);
-
   useEffect(() => {
     if(localStorage.getItem("contacts") !== "[]") {
       const localContacts = localStorage.getItem("contacts")
       const parsedContacts = JSON.parse(localContacts)
-      setContacts(() => 
-        parsedContacts
-      )
+      setContacts(parsedContacts)
     }
   }, [])
 
   useEffect(() => {
-    if(contacts !== prevCount) {
-      localStorage.setItem("contacts", JSON.stringify(contacts))
-    }
-  }, [contacts, prevCount])
-
-  function usePrevious(value) {
-    const ref = useRef();
-
-    useEffect(() => {
-      ref.current = value;
-    }, [value]);
-
-    return ref.current;
-  }
+    localStorage.setItem("contacts", JSON.stringify(contacts))
+  }, [contacts])
   
   const updateContacts = (id, name, number) => {
     setContacts(prevState => 
@@ -44,16 +28,12 @@ export const App = () => {
   }
 
   const updateFilter = (filter) => {
-    setFilter(() => {
-      return filter
-    })
+    setFilter(filter)
   } 
 
   const deleteContact = (id) => {
     const newContacts = contacts.filter(element => element.id !== id);
-    setContacts(() => {
-      return newContacts
-    })
+    setContacts(newContacts)
   }
 
   return (

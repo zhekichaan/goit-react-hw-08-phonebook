@@ -16,12 +16,10 @@ export const Phonebook = ({ contacts, updateContacts }) => {
           } else {
             alert(`${name} is already in contacts`)
           }
-        
     }
 
     const handleChange = e => {
         const { name, value } = e.target;
-        
         if(name === 'name') {
             setName(() => {
                 return value
@@ -31,7 +29,6 @@ export const Phonebook = ({ contacts, updateContacts }) => {
                 return value
             })
         }
-
     };
 
     return (
