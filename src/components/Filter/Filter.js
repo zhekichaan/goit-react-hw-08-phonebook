@@ -1,8 +1,16 @@
 import { Box } from "components/Box";
-import PropTypes from 'prop-types';
 import { FilterInput } from "./Filter.styled";
+import { useDispatch, useSelector } from "react-redux";
+import { setFilter } from "redux/filterSlice";
 
-export const Filter = ({filter, updateFilter}) => {
+export const Filter = () => {
+    const dispatch = useDispatch();
+    const filter = useSelector(store => store.filter)
+
+    const updateFilter = (filter) => {
+        dispatch(setFilter(filter))
+    } 
+
     return (
         <Box mt="20px">
             <p>Find contacts by name</p>
@@ -16,7 +24,3 @@ export const Filter = ({filter, updateFilter}) => {
     )
 }
 
-Filter.propTypes = {
-    filter: PropTypes.string.isRequired,
-    updateFilter: PropTypes.func.isRequired,
-}

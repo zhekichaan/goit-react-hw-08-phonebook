@@ -1,18 +1,14 @@
 import { ContactsItemWrapper } from "./ContactsItem.styled"
-import PropTypes from 'prop-types';
+import { useDispatch } from "react-redux";
+import { deleteContact } from "redux/contactsSlice";
 
-export const ContactsItem = ({ name, number, id, deleteContact }) => {
+export const ContactsItem = ({ name, number, id }) => {
+    const dispatch = useDispatch();
+
     return (
         <ContactsItemWrapper>
             <p>{name}: {number}</p>
-            <button onClick={() => deleteContact(id)}>Delete</button>
+            <button onClick={() => dispatch(deleteContact(id))}>Delete</button>
         </ContactsItemWrapper>
     )
 }
-
-ContactsItem.propTypes = {
-    name: PropTypes.string.isRequired,
-    number: PropTypes.string.isRequired,
-    id: PropTypes.string.isRequired,
-    deleteContact: PropTypes.func.isRequired,
-  }
