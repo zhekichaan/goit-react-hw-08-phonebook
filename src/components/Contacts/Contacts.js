@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { ContactsList } from './Contacts.styled';
 import { ContactsItem } from 'components/ContactsItem/ContactsItem';
 
@@ -9,4 +10,9 @@ export const Contacts = ({ contacts }) => {
       ))}
     </ContactsList>
   )
+}
+
+
+Contacts.propTypes = {
+  contacts: PropTypes.array.isRequired,
 }

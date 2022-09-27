@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { useState } from "react";
 import { nanoid } from "nanoid";
 import { PhonebookForm } from "./Phonebook.styled";
@@ -61,3 +62,7 @@ export const Phonebook = ({ contacts }) => {
         </PhonebookForm>
     )
 }
+
+Phonebook.propTypes = {
+    contacts: PropTypes.array.isRequired,
+  }
