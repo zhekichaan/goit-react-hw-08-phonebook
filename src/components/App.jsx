@@ -6,6 +6,7 @@ import { RestrictedRoute } from './RestrictedRoute';
 import { useAuth } from 'hooks';
 import { useDispatch } from 'react-redux';
 import { refreshUser } from 'redux/auth/operations';
+import { GlobalStyle } from './GlobalStyles';
 
 export const App = () => {
   const { isRefreshing } = useAuth();
@@ -24,6 +25,7 @@ export const App = () => {
   return isRefreshing ? (
     <b>Refreshing user...</b>
   ) : (
+    <>
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<HomePage />} />
@@ -47,5 +49,8 @@ export const App = () => {
         />
       </Route>
     </Routes>
+    <GlobalStyle />
+    </>
+    
   );
 };
