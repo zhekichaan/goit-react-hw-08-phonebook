@@ -7,24 +7,20 @@ export const Navigation = () => {
 
   return (
     <nav>
-      <NavLink to="/">
-        <StyledLink>
+      <StyledLink to="/home">
           Home
         </StyledLink>
-      </NavLink>
       {isLoggedIn && (
-        <NavLink to="/contacts">
-          <StyledLink>
+        <StyledLink to="/contacts">
             Contacts
-          </StyledLink>
-        </NavLink>
+        </StyledLink>
       )}
     </nav>
   );
 };
 
 
-export const StyledLink = styled.div`
+export const StyledLink = styled(NavLink)`
     display: inline-block;
     text-decoration: none;
     padding: 12px;

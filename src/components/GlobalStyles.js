@@ -14,8 +14,9 @@ export const GlobalStyle = createGlobalStyle`
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
       monospace;
   }
-  h1,h2,h3,h4,h5,h6,p {
+  h1,h2,h3,h4,h5,h6,p,ul {
     margin: 0;
+    padding: 0;
   }
   button {
     appearance: none;
@@ -43,7 +44,8 @@ export const GlobalStyle = createGlobalStyle`
     word-wrap: break-word;
 
         &:hover {
-            background-color: #F3F4F6;
+            color: white;
+            background-color: #e84a5f;
             text-decoration: none;
             transition-duration: 0.1s;
         }

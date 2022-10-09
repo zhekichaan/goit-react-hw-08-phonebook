@@ -26,7 +26,7 @@ export const LoginForm = () => {
   const theme = createTheme({
     palette: {
       primary: {
-        main: '#ff4400',
+        main: '#e84a5f',
       },
       secondary: {
         light: '#0066ff',

@@ -1,19 +1,24 @@
 import styled from "styled-components";
 
 export const PhonebookForm = styled.form`
-    display: flex;
-    flex-direction: column;
-    width: 400px;
-    border: 1px solid black;
-    padding: 15px;
-    margin: 20px 0 50px;
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	max-width: 365px;
+	background-color: #FFF;
+	border-radius: 10px;
+	box-shadow: 0 10px 20px 0 #9a9a9a;
+	padding: .75rem;
 
-    & input {
-        margin: 8px 0 16px;
-        width: 200px;
+    & input:focus ~ label, input:valid ~ label {
+        top: -20px;
+        font-size: 14px;
+        color: #e84a5f;
     }
 
     & button {
-        width: 150px;
+        margin: 10px auto;
+        padding: 10px;
+        width: 200px;
     }
 `

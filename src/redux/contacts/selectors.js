@@ -5,3 +5,5 @@ export const selectError = state => state.contacts.error;
 export const selectContacts = state => state.contacts.items
 
 export const selectFilter = state => state.filter
+
+export const selectHasContacts = state => state.contacts.hasContacts

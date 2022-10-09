@@ -1,55 +1,23 @@
 import { useDispatch } from 'react-redux';
 import { logOut } from 'redux/auth/operations';
 import { useAuth } from 'hooks';
-import Button from '@mui/material/Button';
+import { Box } from '@mui/material';
+import styled from 'styled-components';
 
 export const UserMenu = () => {
   const dispatch = useDispatch();
   const { user } = useAuth();
 
   return (
-    <div>
-      <p>Welcome, {user.name}</p>
-      <Button variant="outlined" size="small" type="button" onClick={() => dispatch(logOut())}>
+    <Box display="flex" alignItems="center">
+      <UserMessage>Welcome, {user.name}</UserMessage>
+      <button type="button" onClick={() => dispatch(logOut())}>
         Logout
-      </Button>
-    </div>
+      </button>
+    </Box>
   );
 };
 
-
-/* CSS */
-// .button {
-//   background-color: #fff;
-//   border: 0 solid #e2e8f0;
-//   border-radius: 1.5rem;
-//   box-sizing: border-box;
-//   color: #0d172a;
-//   cursor: pointer;
-//   display: inline-block;
-//   font-family: "Basier circle",-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
-//   font-size: 1.1rem;
-//   font-weight: 600;
-//   line-height: 1;
-//   padding: 1rem 1.6rem;
-//   text-align: center;
-//   text-decoration: none #0d172a solid;
-//   text-decoration-thickness: auto;
-//   transition: all .1s cubic-bezier(.4, 0, .2, 1);
-//   box-shadow: 0px 1px 2px rgba(166, 175, 195, 0.25);
-//   user-select: none;
-//   -webkit-user-select: none;
-//   touch-action: manipulation;
-// }
-
-// .button-81:hover {
-//   background-color: #1e293b;
-//   color: #fff;
-// }
-
-// @media (min-width: 768px) {
-//   .button-81 {
-//     font-size: 1.125rem;
-//     padding: 1rem 2rem;
-//   }
-// }
+export const UserMessage = styled.p`
+  margin-right: 15px;
+`
