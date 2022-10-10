@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import styled from 'styled-components';
+import { StyledLink } from 'components/StyledLink';
 
 export const AuthNav = () => {
   return (
@@ -18,14 +18,4 @@ export const AuthNav = () => {
   );
 };
 
-export const StyledLink = styled.div`
-    display: inline-block;
-    text-decoration: none;
-    padding: 12px;
-    font-weight: 700;
-    color: #2a363b;
 
-    &:hover {
-        color: #e84a5f;
-    }
-`

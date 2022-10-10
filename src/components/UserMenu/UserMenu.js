@@ -2,7 +2,7 @@ import { useDispatch } from 'react-redux';
 import { logOut } from 'redux/auth/operations';
 import { useAuth } from 'hooks';
 import { Box } from '@mui/material';
-import styled from 'styled-components';
+import { UserMessage } from './UserMenu.styled';
 
 export const UserMenu = () => {
   const dispatch = useDispatch();
@@ -18,6 +18,4 @@ export const UserMenu = () => {
   );
 };
 
-export const UserMessage = styled.p`
-  margin-right: 15px;
-`
+

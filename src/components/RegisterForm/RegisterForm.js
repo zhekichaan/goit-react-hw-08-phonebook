@@ -1,12 +1,8 @@
 import { createTheme, ThemeProvider } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import { register } from 'redux/auth/operations';
-// import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
-// import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-// import FormControlLabel from '@mui/material/FormControlLabel';
-// import Checkbox from '@mui/material/Checkbox';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
@@ -37,7 +33,6 @@ export const RegisterForm = () => {
       secondary: {
         light: '#0066ff',
         main: '#0044ff',
-        // dark: will be calculated from palette.secondary.main,
         contrastText: '#ffcc00',
       },
     },
@@ -45,21 +40,6 @@ export const RegisterForm = () => {
 
   return (
   <ThemeProvider theme={theme}>
-    {/* <form onSubmit={handleSubmit} autoComplete="off">
-      <label>
-        Username
-        <input type="text" name="name" />
-      </label>
-      <label>
-        Email
-        <input type="email" name="email" />
-      </label>
-      <label>
-        Password
-        <input type="password" name="password" />
-      </label>
-      <button type="submit">Register</button>
-    </form> */}
     <Container component="main" maxWidth="xs">
     <Box
           sx={{
@@ -117,7 +97,7 @@ export const RegisterForm = () => {
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
-                <Link href="/login" variant="body2">
+                <Link href="/goit-react-hw-08-phonebook/login" variant="body2">
                   Already have an account? Sign in
                 </Link>
               </Grid>
